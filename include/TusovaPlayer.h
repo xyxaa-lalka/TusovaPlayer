@@ -3,6 +3,7 @@
 
 #include <FL/Fl.H>
 #include <FL/Fl_Window.H>
+#include <FL/Fl_Overlay_Window.H>
 #include "OOFLTime.h"
 #include "OOFLButton.h"
 #include "OOFLRoller.h"
@@ -73,11 +74,11 @@ const static double win_timeout = 0.25;
 
 
 
-class MainWindow : public Fl_Window{
+class MainWindow : public Fl_Overlay_Window {
     bool can_upd;
 public:
     MainWindow(int argc, char* argv[])
-        : Fl_Window(pos_x, pos_y, win_w, win_h, msg_arr[key_title])
+        : Fl_Overlay_Window(pos_x, pos_y, win_w, win_h, msg_arr[key_title])
         , can_upd(0)
         { Logic(argc, argv); }
     int Run() { return Fl::run(); }

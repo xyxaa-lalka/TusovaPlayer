@@ -19,9 +19,14 @@ public:
     AudioPlayer()
         : first(0), last(0), cur(0)
         , loop(0), end(1), len(0) {}
+
     ~AudioPlayer();
     Audio& Get();
     void Add(const char* path);
+    void Play()   { cur->audio.Play(); }
+    void Pause()  { cur->audio.Pause(); }
+    void Resume() { cur->audio.Resume(); }
+    void Stop()   { cur->audio.Stop(); }
     void Next();
     void Prev();
     void SetVolume(int a_volume);

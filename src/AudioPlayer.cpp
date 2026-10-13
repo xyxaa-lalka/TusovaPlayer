@@ -1,6 +1,8 @@
+#include <SDL2/SDL_mixer.h>
 #include "AudioPlayer.h"
 #include "dir_scan.h"
 #include "Error.h"
+
 
 AudioPlayer a_pl;
 
@@ -25,8 +27,10 @@ void AudioPlayer::Add(const char* path)
 {
     if(is_directory(path)) {
 		dir_scan(path, *this);
-	} else
+	} else if(is_music(path)) {
 		Push(path);
+    } else
+        throw "fatal";
 }
 
 void AudioPlayer::Next()
